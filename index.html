@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="map.css">
+    <script src="map.js" defer></script>
+</head>
+<body>
+    <div id="container" class="container">
+        <div class="left" id="left">
+            <div class="form_ctn" id="form_ctn">
+                <form class="form hidden" id="form">
+                    <select name="optns" id="optns">
+                        
+                        <option value="SWIMMING" class="option">SWIMMING</option>
+                        <option value="GYM"class="option">GYM</option>
+                        <option value="FOOTBALL"class="option">FOOTBALL</option>
+                    </select>
+
+                    <input type="text" name="duration" id="duration" placeholder="Enter the duration in mins"/>
+
+                    <button type="submit" id="submit">ADD</button>
+                </form>
+            </div>
+
+            <!-- List COntainer-->
+
+            <div class="list_ctn" id="list_ctn">
+
+                <!-- <div class="list">
+                    <div class="title_txt" id="title_txt">CYCLING</div>
+                    <div class="time_txt" id="time_txt">70</div>
+                </div>
+                <div class="list"></div>
+                <div class="list"></div>
+                <div class="list"></div> -->
+
+                <!-- NEED TO DYNAMICALLY ADD THE ELEMENTS -->
+
+            </div>
+        </div>
+
+        <div class="right" id="right">
+            <div id="map"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
