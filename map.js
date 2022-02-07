@@ -1,7 +1,7 @@
 const form=document.getElementById("form");
 
-const dur=document.getElementById("duration");
-const optns=document.getElementById("optns");
+// const dur=document.getElementById("duration");
+// const optns=document.getElementById("optns");
 
 const submit=document.getElementById("submit");
 const list_ctn=document.getElementById("list_ctn");
@@ -24,7 +24,7 @@ const populateList =(log_dat)=>{
 
     list_ctn.innerHTML="";
 
-    console.log(log_dat);
+    // console.log(log_dat);
     log_dat.forEach((item)=>{
         let li=document.createElement('div');
         li.classList.add("list");
@@ -95,50 +95,13 @@ function onSuccess(event){
 
     map.on('click',function(mapEvent){
         form.classList.remove("hidden");
-        dur.value="";
-	optns.value="";	 
+        // dur.value="";
+        log_data=[];  
     
 
-        submit.addEventListener("click",function formHandler(ev){
-            
-            ev.preventDefault();
-            console.log("clicked submit");
-            const title=optns.value;
-            const time=dur.value;
-            const data={
-                title:title,
-                time:time
-            }
-        
-            form.classList.add("hidden");
-        
-            log_data.push(data);
-            populateList(log_data);
-            // console.log(log_data);
-        
-            localStorage.setItem('data',JSON.stringify(log_data));
-        
-            disp_title=title;
-            disp_time=time;
-            console.log(disp_title,disp_time);
-        
-        
-            popup.setLatLng(mapEvent.latlng)
-                .setContent(`${disp_title} ${disp_time}`)
-            
-                .openOn(map);
-
-
-
-            createMarker(popup);
-        
-        
-        
-        
-              
-        });
+     
         current_location=[mapEvent.latlng.lat,mapEvent.latlng.lng];
-        log_data=[];  
+        
 
         if(localStorage.getItem('data')){  //If there is data present in the local storage then we have to insert it into the Array so even   if we refresh the page it wont erase the previous data.
 
@@ -153,6 +116,52 @@ function onSuccess(event){
 
 
 
+    });
+
+
+    submit.addEventListener("click",function formHandler(ev){
+            
+        ev.preventDefault();
+                    
+        const dur=document.getElementById("duration");
+        const optns=document.getElementById("optns");
+     
+        console.log("clicked submit");
+        const title=optns.value;
+        const time=dur.value;
+        const data={
+            title:title,
+            time:time
+        }
+    
+        form.classList.add("hidden");
+        console.log(log_data);
+    
+        log_data.push(data);
+        
+        populateList(log_data);
+        // console.log(log_data);
+    
+        localStorage.setItem('data',JSON.stringify(log_data));
+    
+        disp_title=title;
+        disp_time=time;
+        console.log(disp_title,disp_time);
+    
+    
+        popup.setLatLng(current_location)
+            .setContent(`${disp_title} ${disp_time}`)
+        
+            .openOn(map);
+
+
+
+        createMarker(popup);
+    
+    
+    
+    
+          
     });
 
 }
