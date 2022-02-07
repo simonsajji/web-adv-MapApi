@@ -96,6 +96,7 @@ function onSuccess(event){
     map.on('click',function(mapEvent){
         form.classList.remove("hidden");
         dur.value="";
+	optns.value="";	 
     
 
         submit.addEventListener("click",function formHandler(ev){
